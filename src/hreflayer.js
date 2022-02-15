@@ -49,19 +49,20 @@ export default class HrefLayer extends Layer {
   /**
    * Handles new properties being passed into <HrefLayer/>
    *
-   * This will be replaced by
+   * UNSAFE_componentWillReceiveProps() replaced with
+   * shouldComponentUpdate() as they have similar calling patterns.
+   * We are using this method for a side-effect, and therefore
+   * returning True. getDerivedStateFromProps() had an additional
+   * call at mount which UNSAFE_componentWillReceiveProps() lacked.
+   * Thus the usage of shouldComponentUpdate().
    *
-   *     static getDerivedStateFromProps(nextProps, prevState)
-   *
-   * in React 17.
-   *
-   * This sits in the lifecycle right before `shouldComponentUpdate`,
-   * `componentWillUpdate`, and most importantly `render`, so this is
-   * where we will call the plot's `reload` and `headermod` methods.
+   * This sits in the lifecycle right before `componentWillUpdate`,
+   * and most importantly `render`, so this is where we will call
+   * the plot's `reload` and `headermod` methods.
    *
    * @param nextProps    the newly received properties
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  shouldComponentUpdate(nextProps, _nextState) {
     const { href: oldHref, options: oldOptions } = this.props;
 
     const { href: newHref, onload: newOnload, options: newOptions } = nextProps;
@@ -74,6 +75,6 @@ export default class HrefLayer extends Layer {
       this.plot.get_layer(this.layer).change_settings(newOptions);
     }
 
-    return false;
+    return true;
   }
 }
