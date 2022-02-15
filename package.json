@@ -1,7 +1,7 @@
 {
   "name": "react-sigplot",
   "description": "React wrapper for SigPlot",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "homepage": "https://github.com/lgsinnovations/react-sigplot",
   "author": {
     "name": "LGS Innovations",
@@ -37,6 +37,14 @@
   },
   "dependencies": {
     "sigplot": "^2.0.0-rc20"
+<<<<<<< HEAD
+=======
+  },
+  "jest": {
+    "setupFiles": [
+      "jest-canvas-mock"
+    ]
+>>>>>>> a9d67fa (Update tests to react 17, update package.json to new react and new canvas as 2.6.1 is incompatible with new NPM versions)
   },
   "babel": {
     "presets": [
@@ -119,10 +127,19 @@
     "@babel/preset-react": "^7.16.7",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "babel-eslint": "^10.1.0",
+<<<<<<< HEAD
     "babel-jest": "^27.5.1",
     "canvas": "^2.9.0",
     "chai": "^4.2.0",
     "enzyme": "^3.11.0",
+=======
+    "babel-jest": "^25.4.0",
+    "babel-loader": "^8.1.0",
+    "canvas": "^2.9.0",
+    "chai": "^4.2.0",
+    "enzyme": "^3.11.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+>>>>>>> a9d67fa (Update tests to react 17, update package.json to new react and new canvas as 2.6.1 is incompatible with new NPM versions)
     "enzyme-to-json": "^3.4.4",
     "esbuild": "^0.14.21",
     "eslint": "^6.8.0",
@@ -136,15 +153,24 @@
     "file-loader": "^6.0.0",
     "jest": "^27.5.1",
     "jest-canvas-mock": "^2.2.0",
+<<<<<<< HEAD
     "jsdoc": "^3.6.6",
+=======
+>>>>>>> a9d67fa (Update tests to react 17, update package.json to new react and new canvas as 2.6.1 is incompatible with new NPM versions)
     "merge": ">=1.2.1",
     "minami": "^1.2.3",
     "prettier": "^2.0.4",
     "sinon": "^13.0.1"
   },
   "peerDependencies": {
+<<<<<<< HEAD
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+=======
+    "prop-types": ">15.5.7",
+    "react": "^17.0.2",
+    "react-dom": ">=16"
+>>>>>>> a9d67fa (Update tests to react 17, update package.json to new react and new canvas as 2.6.1 is incompatible with new NPM versions)
   }
 }
