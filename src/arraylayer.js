@@ -29,11 +29,11 @@ class ArrayLayer extends Layer {
    *
    * A large portion of the time, especially for dynamic
    * systems, this will look like
-   * `this.plot.overlay_array([], undefined)` upon mount.
+   * `this.context.overlay_array([], undefined)` upon mount.
    */
   componentDidMount() {
     const { data, options, layerOptions } = this.props;
-    this.layer = this.plot.overlay_array(data, options, layerOptions);
+    this.layer = this.context.overlay_array(data, options, layerOptions);
   }
 
   /**
@@ -70,11 +70,11 @@ class ArrayLayer extends Layer {
     // otherwise, we only need to headermod
     // with the new options
     if (nextData !== currentData) {
-      this.plot.reload(this.layer, nextData, nextOptions);
+      this.context.reload(this.layer, nextData, nextOptions);
     } else if (nextOptions !== currentOptions) {
-      this.plot.headermod(this.layer, nextOptions);
+      this.context.headermod(this.layer, nextOptions);
     } else if (nextLayerOptions !== currentLayerOptions) {
-      this.plot.get_layer(this.layer).change_settings(nextLayerOptions);
+      this.context.get_layer(this.layer).change_settings(nextLayerOptions);
     }
 
     return true;

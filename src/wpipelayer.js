@@ -36,12 +36,12 @@ class WPipeLayer extends Layer {
    *
    * A large portion of the time, especially for dynamic
    * systems, this will look like a single
-   * `this.plot.overlay_wpipe(wsurl, null, {"layerType": "1D", pipesize: ...)`
+   * `this.context.overlay_wpipe(wsurl, null, {"layerType": "1D", pipesize: ...)`
    * upon mount.
    */
   componentDidMount() {
     const { wsurl, options, layerOptions, fps } = this.props;
-    this.layer = this.plot.overlay_wpipe(wsurl, options, layerOptions, fps);
+    this.layer = this.context.overlay_wpipe(wsurl, options, layerOptions, fps);
   }
 
   /**
@@ -79,17 +79,17 @@ class WPipeLayer extends Layer {
     // otherwise, we only need to headermod
     // with the new options
     if (nextWsurl !== currentWsurl || currentFps !== nextFps) {
-      this.plot.delete_layer(this.layer);
-      this.layer = this.plot.overlay_wpipe(
+      this.context.delete_layer(this.layer);
+      this.layer = this.context.overlay_wpipe(
         nextWsurl,
         nextOptions,
         nextLayerOptions,
         nextFps
       );
     } else if (nextOptions !== currentOptions) {
-      this.plot.headermod(this.layer, nextOptions);
+      this.context.headermod(this.layer, nextOptions);
     } else if (nextLayerOptions !== currentLayerOptions) {
-      this.plot.get_layer(this.layer).change_settings(nextLayerOptions);
+      this.context.get_layer(this.layer).change_settings(nextLayerOptions);
     }
     return true;
   }

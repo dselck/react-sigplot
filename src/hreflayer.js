@@ -43,7 +43,7 @@ class HrefLayer extends Layer {
    */
   componentDidMount() {
     const { href, onload, options } = this.props;
-    this.layer = this.plot.overlay_href(href, onload, options);
+    this.layer = this.context.overlay_href(href, onload, options);
   }
 
   /**
@@ -69,10 +69,10 @@ class HrefLayer extends Layer {
 
     // we only care if `href` or `options` changes
     if (newHref !== oldHref) {
-      this.plot.deoverlay(this.layer);
-      this.layer = this.plot.overlay_href(newHref, newOnload, newOptions);
+      this.context.deoverlay(this.layer);
+      this.layer = this.context.overlay_href(newHref, newOnload, newOptions);
     } else if (this.layer !== undefined && newOptions !== oldOptions) {
-      this.plot.get_layer(this.layer).change_settings(newOptions);
+      this.context.get_layer(this.layer).change_settings(newOptions);
     }
 
     return true;

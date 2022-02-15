@@ -29,19 +29,7 @@ class Layer extends Component {
    * from the plot.
    */
   componentWillUnmount() {
-    this.plot.remove_layer(this.layer);
-  }
-
-  /**
-   * Getter for the sigplot.Plot object
-   *
-   * The `plot` is 'given' to  the layer-children
-   * from the <SigPlot> parent component, so we receive
-   * it from the context.
-   */
-  get plot() {
-    const { plot } = this.context;
-    return plot;
+    this.context.remove_layer(this.layer);
   }
 
   /**

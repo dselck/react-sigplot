@@ -22,7 +22,7 @@ class Plugin extends Component {
    * from the plot.
    */
   componentWillUnmount() {
-    this.plot.remove_plugin(this.plugin);
+    this.context.remove_plugin(this.plugin);
   }
 
   /**
