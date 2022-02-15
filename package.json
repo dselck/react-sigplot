@@ -1,7 +1,7 @@
 {
   "name": "react-sigplot",
   "description": "React wrapper for SigPlot",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "homepage": "https://github.com/lgsinnovations/react-sigplot",
   "author": {
     "name": "LGS Innovations",
@@ -33,7 +33,7 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "sigplot": "^2.0.0-rc19"
+    "sigplot": "^2.0.0-rc20"
   },
   "jest": {
     "setupFiles": [
@@ -113,10 +113,10 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.4.0",
     "babel-loader": "^8.1.0",
-    "canvas": "^2.6.1",
+    "canvas": "^2.9.0",
     "chai": "^4.2.0",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
@@ -129,8 +129,8 @@
     "file-loader": "^6.0.0",
     "jest": "^25.4.0",
     "jest-canvas-mock": "^2.2.0",
-    "minami": "^1.2.3",
     "merge": ">=1.2.1",
+    "minami": "^1.2.3",
     "prettier": "^2.0.4",
     "react-doc-generator": "^1.2.5",
     "sinon": "^9.0.2",
@@ -138,8 +138,8 @@
     "webpack-cli": "^3.3.11"
   },
   "peerDependencies": {
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "prop-types": ">15.5.7",
+    "react": "^17.0.2",
+    "react-dom": ">=16"
   }
 }
