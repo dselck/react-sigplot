@@ -34,7 +34,7 @@ export default class BlueLayer extends Layer {
    */
   componentDidMount() {
     const { data, layerOptions } = this.props;
-    this.layer = this.plot.overlay_bluefile(data, layerOptions);
+    this.layer = this.context.overlay_bluefile(data, layerOptions);
   }
 
   /**
@@ -71,11 +71,11 @@ export default class BlueLayer extends Layer {
     // otherwise, we only need to headermod
     // with the new options
     if (nextData !== currentData) {
-      this.plot.reload(this.layer, nextData, nextOptions);
+      this.context.reload(this.layer, nextData, nextOptions);
     } else if (nextOptions !== currentOptions) {
-      this.plot.headermod(this.layer, nextOptions);
+      this.context.headermod(this.layer, nextOptions);
     } else if (nextLayerOptions !== currentLayerOptions) {
-      this.plot.get_layer(this.layer).change_settings(nextLayerOptions);
+      this.context.get_layer(this.layer).change_settings(nextLayerOptions);
     }
 
     return true;

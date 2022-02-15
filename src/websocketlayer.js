@@ -41,7 +41,7 @@ export default class WebsocketLayer extends Layer {
    */
   componentDidMount() {
     const { wsurl, overrides, options } = this.props;
-    this.layer = this.plot.overlay_websocket(wsurl, overrides, options);
+    this.layer = this.context.overlay_websocket(wsurl, overrides, options);
   }
 
   /**
@@ -73,14 +73,14 @@ export default class WebsocketLayer extends Layer {
 
     // we only care if `wsurl` or `options` changes;
     if (newWsurl !== oldWsurl) {
-      this.plot.deoverlay(this.layer);
-      this.layer = this.plot.overlay_websocket(
+      this.context.deoverlay(this.layer);
+      this.layer = this.context.overlay_websocket(
         newWsurl,
         newOverrides,
         newOptions
       );
     } else if (this.layer !== undefined && newOptions !== oldOptions) {
-      this.plot.get_layer(this.layer).change_settings(newOptions);
+      this.context.get_layer(this.layer).change_settings(newOptions);
     }
 
     return true;

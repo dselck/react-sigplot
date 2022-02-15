@@ -26,12 +26,12 @@ export default class PipeLayer extends Layer {
     const { options, data, layerOptions } = this.props;
 
     // start by setting the header of the pipe
-    this.layer = this.plot.overlay_pipe(options, layerOptions);
+    this.layer = this.context.overlay_pipe(options, layerOptions);
 
     // if data is provided and non-empty, go ahead and
     // begin plotting data
     if (data !== undefined && data.length > 0) {
-      this.plot.push(this.layer, data);
+      this.context.push(this.layer, data);
     }
   }
 
@@ -67,11 +67,11 @@ export default class PipeLayer extends Layer {
 
     // if new data has come in, plot that
     if (nextData && nextData !== currentData) {
-      this.plot.push(this.layer, nextData, nextOptions);
+      this.context.push(this.layer, nextData, nextOptions);
     } else if (nextOptions !== currentOptions) {
-      this.plot.headermod(this.layer, nextOptions);
+      this.context.headermod(this.layer, nextOptions);
     } else if (nextLayerOptions !== currentLayerOptions) {
-      this.plot.get_layer(this.layer).change_settings(nextLayerOptions);
+      this.context.get_layer(this.layer).change_settings(nextLayerOptions);
     }
 
     return true;
