@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types';
-import { Plot } from 'sigplot';
+import { PlotContext } from './sigplot';
 
 /**
  * Abstract base class for all Plugins
@@ -15,9 +15,7 @@ class Plugin extends Component {
     pluginOptions: PropTypes.object, // eslint-disable-line react/no-unused-prop-types
   };
 
-  static contextTypes = {
-    plot: PropTypes.instanceOf(Plot),
-  };
+  static contextType = PlotContext;
 
   /**
    * On unmount, all we need to do is remove the plugin

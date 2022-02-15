@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Plot } from 'sigplot';
 
+export const PlotContext = React.createContext(undefined);
+
 /**
  * SigPlot.js React wrapper class
  *
@@ -58,12 +60,6 @@ class SigPlot extends Component {
     this.state = {};
   }
 
-  getChildContext() {
-    return {
-      plot: this.plot,
-    };
-  }
-
   componentDidMount() {
     const { options } = this.props;
     this.plot = new Plot(this.element, options);
@@ -74,7 +70,7 @@ class SigPlot extends Component {
     this.setState({ plot: this.plot });
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  shouldComponentUpdate(nextProps, _nextState) {
     const { height, width, options } = this.props;
     const {
       height: newHeight,
@@ -94,6 +90,8 @@ class SigPlot extends Component {
     if (newOptions !== options) {
       this.plot.change_settings(newOptions);
     }
+
+    return true;
   }
 
   render() {
@@ -134,17 +132,19 @@ class SigPlot extends Component {
       : null;
 
     return (
-      <div
-        style={{
-          height,
-          width,
-          display, // this will be deprecated
-          ...styles,
-        }}
-        ref={(element) => (this.element = element)}
-      >
-        {children}
-      </div>
+      <PlotContext.Provider value={this.plot}>
+        <div
+          style={{
+            height,
+            width,
+            display, // this will be deprecated
+            ...styles,
+          }}
+          ref={(element) => (this.element = element)}
+        >
+          {children}
+        </div>
+      </PlotContext.Provider>
     );
   }
 }
