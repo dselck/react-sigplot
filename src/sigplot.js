@@ -39,10 +39,6 @@ class SigPlot extends Component {
     options: PropTypes.object,
   };
 
-  static childContextTypes = {
-    plot: PropTypes.instanceOf(Plot),
-  };
-
   static defaultProps = {
     height: 300,
     width: 300,
