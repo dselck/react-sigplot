@@ -7,10 +7,10 @@ export const PlotContext = React.createContext(undefined);
 /**
  * SigPlot.js React wrapper class
  *
- * @version 0.1.2
+ * @version 0.1.15
  * @visibleName SigPlot.js React Wrapper
  */
-export default class SigPlot extends Component {
+class SigPlot extends Component {
   static propTypes = {
     /**
      * Different Layer nodes (e.g., ArrayLayer, PipeLayer, etc.)
@@ -37,10 +37,6 @@ export default class SigPlot extends Component {
      * @see See [sigplot.Plot Docs](http://sigplot.lgsinnovations.com/html/doc/sigplot.Plot.html)
      */
     options: PropTypes.object,
-  };
-
-  static childContextTypes = {
-    plot: PropTypes.instanceOf(Plot),
   };
 
   static defaultProps = {
@@ -148,3 +144,5 @@ export default class SigPlot extends Component {
     );
   }
 }
+
+export default SigPlot;

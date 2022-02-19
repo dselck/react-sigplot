@@ -15,7 +15,7 @@ import Layer from './layer';
  *
  * where options is populated before data begins flowing
  */
-export default class PipeLayer extends Layer {
+class PipeLayer extends Layer {
   /**
    * On mount, the only action we can take is to overlay the
    * pipe with the specified header (`options`) information
@@ -77,3 +77,5 @@ export default class PipeLayer extends Layer {
     return true;
   }
 }
+
+export default PipeLayer;

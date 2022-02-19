@@ -1,2 +1,4 @@
-doc/*
+/dist/*
+/doc/*
 /**/*.d.ts
+/example/example.js
